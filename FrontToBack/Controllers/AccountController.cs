@@ -117,8 +117,12 @@ namespace FrontToBack.Controllers
                 ModelState.AddModelError("", "Invalid Credentials");
                 return View();
             }
-       
-            
+
+            if (existUser.Isdeleted)
+            {
+                ModelState.AddModelError("", "Login ola bilmezsiz");
+            }
+
             var result = await _signInManager.PasswordSignInAsync(existUser, loginModel.Password, loginModel.RememberMe, true);
             if (result.IsLockedOut)
             {
@@ -130,7 +134,7 @@ namespace FrontToBack.Controllers
                 ModelState.AddModelError("","Invalid Credentials");
                 return View();
             }
-
+          
             return RedirectToAction(nameof(Index), "Home");
             
         }

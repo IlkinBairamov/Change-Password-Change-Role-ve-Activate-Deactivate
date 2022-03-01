@@ -87,7 +87,7 @@ namespace FrontToBack.Areas.AdminPanel.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> ChangeRole(string id,string newRole)
+        public async Task<IActionResult> ChangeRole(string id, string newRole)
         {
             if (id==null && newRole == null)
             {
